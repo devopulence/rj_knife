@@ -1,0 +1,15 @@
+---
+driver_plugin: vagrant
+platforms:
+- name: centos-6.5
+  driver_config:
+    box: <%= @config[:vagrant_box] %>
+    box_url: <%= @config[:vagrant_box_url] %>
+    http_proxy: <%= @config[:http_proxy] %>
+    https_proxy: <%= @config[:https_proxy] %>
+suites:
+- name: default
+  data_bags_path: "test/integration/default/data_bags"
+  run_list:
+  - recipe[<%= @config[:cookbook_name] %>]
+  attributes: {}
